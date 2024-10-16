@@ -1,4 +1,4 @@
-package Numbers.DoublyLinkedList;
+package DoublyLinkedList;
 
 public class DoublyLinkedList {
     // Question: Write a method to reverse a doubly linked list.

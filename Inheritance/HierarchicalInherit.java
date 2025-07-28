@@ -1,16 +1,17 @@
 package Inheritance;
 
 
-class Animals{
-    void eating(){
-        System.out.println("Is It Eating BreakFast.");
-    }
-}
-class Dog extends Animals{
-    void bark(){
-        System.out.println("Is Barking Over Theif.");
-    }
-}
+//class Animals{
+//    void eating(){
+//        System.out.println("Is It Eating BreakFast.");
+//    }
+//}
+
+//public class Dog extends Animals{
+//    void bark(){
+//        System.out.println("Is Barking Over Theif.");
+//    }
+//}
 class Cat extends Animals{
     void meow(){
         System.out.println("Mewoing Due to Fear.");
@@ -20,7 +21,7 @@ class Cat extends Animals{
 public class HierarchicalInherit {
     public static void main(String[] args) {
         Cat c=new Cat();
-        c.eating();
+//        c.eating();
         c.meow();
     
     }

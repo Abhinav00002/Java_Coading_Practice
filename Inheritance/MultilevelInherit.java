@@ -2,16 +2,16 @@ package Inheritance;
 
 
 
-class Animals{
-    void eat(){
-        System.out.println("Is Eating Barekfast.");
-    }
-}
-class Dog extends Animals{
-    void bark(){
-        System.out.println("Is barking on Thief");
-    }
-}
+//class Animals{
+//    void eat(){
+//        System.out.println("Is Eating Barekfast.");
+//    }
+//}
+//class Dog extends Animals{
+//    void bark(){
+//        System.out.println("Is barking on Thief");
+//    }
+//}
 class Puppy extends Dog{
     void weeping(){
         System.out.println("Is Dog Child Weeping.");
@@ -22,8 +22,8 @@ class Puppy extends Dog{
 public class MultilevelInherit {
     public static void main(String[] args) {
         Puppy d=new Puppy();
-        d.bark();
-        d.eat();
+//        d.bark();
+//        d.eat();
         d.weeping();
 
     }

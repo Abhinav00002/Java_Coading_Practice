@@ -10,7 +10,8 @@ public class Final {
 }
 //IF we remove  the final keyword then the programs run fine 
 // This class is final
-/*final*/ class Final1{
+/*final*/
+class Final1{
     String s1="Hello!  This is Final Non-Access Modifire.";
 }
 

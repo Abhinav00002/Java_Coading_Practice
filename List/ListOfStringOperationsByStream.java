@@ -1,5 +1,6 @@
 package List;
 
+import javax.xml.stream.events.Characters;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -42,6 +43,23 @@ public class ListOfStringOperationsByStream {
         joinWithStringDelimiters(words);
         countTotalWords(words);
 //        countTotalAlphabets(words);
+        filterStringsStartingWithLowercase(words);
+        filterStringsStartingWithUppercase(words);
+        filterStringsStartingWithEmpty(words);
+    }
+
+    private static void filterStringsStartingWithEmpty(List<String> words) {
+        
+    }
+
+    private static void filterStringsStartingWithUppercase(List<String> words) {
+        String upperCase = words.stream().filter(s -> !s.isEmpty() && Character.isUpperCase(s.charAt(0))).map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Filter strings starting with uppper case: "+upperCase);
+    }
+
+    private static void filterStringsStartingWithLowercase(List<String> words) {
+        String lowercaseStrings = words.stream().filter(s-> !s.isEmpty() &&  Character.isLowerCase(s.charAt(0))).map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Filter strings starting with lowercase: "+lowercaseStrings);
     }
 
     private static void onlyDuplicates(List<String> words) {

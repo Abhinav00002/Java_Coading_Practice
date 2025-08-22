@@ -46,10 +46,22 @@ public class ListOfStringOperationsByStream {
         filterStringsStartingWithLowercase(words);
         filterStringsStartingWithUppercase(words);
         filterStringsStartingWithEmpty(words);
+        filterStringsStartingWithNumber(words);
+        filterStringsWithLength(words);
+    }
+
+    private static void filterStringsWithLength(List<String> words) {
+        words.stream().filter(s -> s.length()>5).map(String::valueOf).collect(Collectors.joining(", ")
+    }
+
+    private static void filterStringsStartingWithNumber(List<String> words) {
+        String numbers = words.stream().filter(s -> !s.isEmpty() && Character.isLetterOrDigit(s.charAt(0))).map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Filter strings starting with Numbers: "+numbers);
     }
 
     private static void filterStringsStartingWithEmpty(List<String> words) {
-        
+        String space = words.stream().filter(s -> !s.isEmpty() && Character.isSpaceChar(s.charAt(0))).map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Filter strings starting with space: "+space);
     }
 
     private static void filterStringsStartingWithUppercase(List<String> words) {

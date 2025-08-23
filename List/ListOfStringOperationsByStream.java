@@ -69,8 +69,25 @@ public class ListOfStringOperationsByStream {
         removeSpecialCharecter(words);
         reverseEachString(words);
         mapToStringLength(words);
+        mapToCharFrequencyMap(words);
 
     }
+
+    private static void mapToCharFrequencyMap(List<String> words) {
+        Map<Character, Long> charFrequency = words.stream().flatMap(s -> s.chars()
+                        .mapToObj(c -> (char) c))
+                .collect(
+                        Collectors.groupingBy(
+                                s -> s,
+                                Collectors.counting()
+                        ));
+        List<Map.Entry<Character, Long>> list = charFrequency.entrySet().stream().sorted(Map.Entry.<Character, Long>comparingByValue(
+                Comparator.reverseOrder()//For Reverse Order
+        )).toList();
+        System.out.println(" Character Frequencies: "+charFrequency);
+        System.out.println(" Character Frequencies in Reverse Sorted order: "+list);
+    }
+
     private static void mapToStringLength(List<String> words){
         List<Integer> list = words.stream().map(String::length).toList();
         System.out.println("Map to String: "+list);

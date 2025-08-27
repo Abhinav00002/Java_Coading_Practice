@@ -7,42 +7,35 @@ import java.io.Serializable;
 import java.lang.reflect.Constructor;
 
 public class ObjectCreationExample {
-
-    public static void main(String[] args) {
+    //1. Using the 'new' Keyword
+    //2. Using reflection
+    //3. Using Clone()
+    //4. Using Deserialization
+    //5. Using a Factory Method
+    //6. Using Dependency Injection
+    //7. Enum Singleton Pattern
+    //8. Using Anonymous Classes
+    //9. Using 'var' With 'new'
+    public static void main(String[] args) throws Exception {
 
         //    1. Using the 'new' Keyword
         Car myCar = new Car();
         myCar.drive();
 
         // 2. Using reflection
-        try {
-            Object object = createWithReflection("Javaclass.ObjectCreationExample$Car");
-            if (object instanceof Car) ((Car) object).drive();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+        Object object = createWithReflection("Javaclass.ObjectCreationExample$Car");
+        if (object instanceof Car) ((Car) object).drive();
 
         //3. Using Clone()
         CarClone carClone = new CarClone();
-        try {
-            CarClone clone = (CarClone) carClone.clone();
-            System.out.println("Cloned Car Model: " + clone.model);
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
-
+        CarClone clone = (CarClone) carClone.clone();
+        System.out.println("Cloned Car Model: " + clone.model);
 
         //4. Using Deserialization
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         CarSerializable carSerializable = new CarSerializable();
-        ObjectOutputStream objectOutputStream = null;
-        try {
-            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(carSerializable);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        objectOutputStream.writeObject(carSerializable);
 
         //5. Using a Factory Method
         Car myCar1 = CarFactory.createCar();
@@ -59,6 +52,7 @@ public class ObjectCreationExample {
         //8. Using Anonymous Classes
         ObjectCreationExample objectCreationExample = new ObjectCreationExample();
         objectCreationExample.createAnonymousCar();
+
         //9. Using 'var' With 'new'
         var car = new Car();
         car.drive();

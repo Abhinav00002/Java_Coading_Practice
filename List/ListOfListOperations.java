@@ -33,6 +33,22 @@ public class ListOfListOperations {
         groupEmployeeByAge(records);
         employeeByAgeAndPrintName(records);
         countSpecialCharactersInName(records);
+        removeDuplicatesIgnoringCaseInNameAndDesignation(records);
+        findLargestName(records);
+    }
+
+    private static void findLargestName(List<List<String>> records) {
+        String s = records.stream().map(record -> record.get(2))
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
+        System.out.println("Find Largest Number: "+ s);
+    }
+
+    private static void removeDuplicatesIgnoringCaseInNameAndDesignation(List<List<String>> records) {
+        Set<String> seen= new HashSet<>();
+        List<List<String>> lists = records.stream().filter(r -> seen.add((r.get(2) + " - " + r.get(4)).toLowerCase())).toList();
+        System.out.println("Remove Duplicates Ignoring Case in Name and Designation: "+lists);
+//        lists.forEach(strings -> strings.forEach(System.out::println));
     }
 
     private static void countSpecialCharactersInName(List<List<String>> records) {

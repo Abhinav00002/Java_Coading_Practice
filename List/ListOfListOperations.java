@@ -11,7 +11,7 @@ public class ListOfListOperations {
     // Each inner list = [Date, Salary, Name, Age, Designation]
     records.add(Arrays.asList("2025-08-01", "50000", "Alice", "30", "Developer"));
     records.add(Arrays.asList("2025-08-01", "50000", "alice", "30", "developer"));  // duplicate with case difference
-    records.add(Arrays.asList("2025-08-02", "60000", "Bob", "35", "Manager"));
+    records.add(Arrays.asList("2025-08-02", "60000", "Bobadbabbaadddaooooooad", "35", "Manager"));
     records.add(Arrays.asList("2025-08-03", "70000", "CHARLIE", "28", "Analyst"));
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // special character in name
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // exact duplicate
@@ -50,10 +50,10 @@ public class ListOfListOperations {
             }
         }
 
-        Optional<String> list = records.stream()
+        String list = records.stream()
                 .map(s -> s.get(2))
-                .max(Comparator.comparingInt(s -> longestUniqueSubStrings(s)));
-        System.out.println(list);
+                .max(Comparator.comparingInt(s -> longestUniqueSubStrings(s))).orElse("");
+        System.out.println(getLongestUniqueSubstring(list));
 
     }
 
@@ -74,6 +74,27 @@ public class ListOfListOperations {
         }
         return max;
     }
+
+    private static String getLongestUniqueSubstring(String s) {
+        Set<Character> seen = new HashSet<>();
+        int i = 0, j = 0, maxLen = 0, start = 0;
+
+        while (j < s.length()) {
+            if (!seen.contains(s.charAt(j))) {
+                seen.add(s.charAt(j));
+                if (j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    start = i;
+                }
+                j++;
+            } else {
+                seen.remove(s.charAt(i));
+                i++;
+            }
+        }
+        return s.substring(start, start + maxLen);
+    }
+
 
     private static void findLargestName(List<List<String>> records) {
         String s = records.stream().map(record -> record.get(2))

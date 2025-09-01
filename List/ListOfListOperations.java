@@ -3,6 +3,7 @@ package List;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ListOfListOperations {
     public static final List<List<String>> records = new ArrayList<>();
@@ -35,13 +36,50 @@ public class ListOfListOperations {
         countSpecialCharactersInName(records);
         removeDuplicatesIgnoringCaseInNameAndDesignation(records);
         findLargestName(records);
+        longestSubStringWithoutRepeatingCharacters(records);
+    }
+
+    private static void longestSubStringWithoutRepeatingCharacters(List<List<String>> records) {
+        for (List<String> record : records) {
+            if (record.size() > 2) {
+                String target = record.get(2);
+                int length = longestUniqueSubStrings(target);
+                System.out.println("Longest unique substring length in: " + target + " = " + length);
+            } else {
+                System.out.println("Record does not have enough elements: " + record);
+            }
+        }
+
+        Optional<String> list = records.stream()
+                .map(s -> s.get(2))
+                .max(Comparator.comparingInt(s -> longestUniqueSubStrings(s)));
+        System.out.println(list);
+
+    }
+
+//sliding window implementation
+    private static Integer longestUniqueSubStrings(String record) {
+        Set<Character> characters=new HashSet<>();
+        int max=0,i=0,j=0;
+        while (j<record.length())
+        {
+            if (!characters.contains(record.charAt(j))){
+                characters.add(record.charAt(j));
+                j++;
+                max=Math.max(max, j-1);
+            }else {
+                characters.remove(record.charAt(i));
+                i++;
+            }
+        }
+        return max;
     }
 
     private static void findLargestName(List<List<String>> records) {
         String s = records.stream().map(record -> record.get(2))
                 .max(Comparator.comparingInt(String::length))
                 .orElse("");
-        System.out.println("Find Largest Number: "+ s);
+        System.out.println("Find Largest Name: "+ s);
     }
 
     private static void removeDuplicatesIgnoringCaseInNameAndDesignation(List<List<String>> records) {

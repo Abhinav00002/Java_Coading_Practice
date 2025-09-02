@@ -8,10 +8,10 @@ import java.util.stream.Stream;
 public class ListOfListOperations {
     public static final List<List<String>> records = new ArrayList<>();
     static {
-    // Each inner list = [Date, Salary, Name, Age, Designation]
+    // list = [Date, Salary, Name, Age, Designation]
     records.add(Arrays.asList("2025-08-01", "50000", "Alice", "30", "Developer"));
     records.add(Arrays.asList("2025-08-01", "50000", "alice", "30", "developer"));  // duplicate with case difference
-    records.add(Arrays.asList("2025-08-02", "60000", "Bobadbabbaadddaooooooad", "35", "Manager"));
+    records.add(Arrays.asList("2025-08-02", "60000", "Bobadbabbaadddaoooad", "35", "Manager"));
     records.add(Arrays.asList("2025-08-03", "70000", "CHARLIE", "28", "Analyst"));
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // special character in name
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // exact duplicate

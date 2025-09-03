@@ -39,6 +39,12 @@ public class ListOfListOperations {
         longestSubStringWithoutRepeatingCharacters(records);
         flatteningAListOfLists(records);
         flatteningAListOfSortedOrderLists(records);
+        joiningAllElementInSingleString(records);
+    }
+
+    private static void joiningAllElementInSingleString(List<List<String>> records) {
+        String collected = records.stream().flatMap(List::stream).collect(Collectors.joining());
+        System.out.println("Joining All Element In Single String: "+collected);
     }
 
     private static void flatteningAListOfSortedOrderLists(List<List<String>> records) {

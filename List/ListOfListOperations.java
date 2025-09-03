@@ -38,6 +38,12 @@ public class ListOfListOperations {
         findLargestName(records);
         longestSubStringWithoutRepeatingCharacters(records);
         flatteningAListOfLists(records);
+        flatteningAListOfSortedOrderLists(records);
+    }
+
+    private static void flatteningAListOfSortedOrderLists(List<List<String>> records) {
+        List<String> list = records.stream().flatMap(List::stream).sorted().collect(Collectors.toList());
+        System.out.println("Flattening A List Of Lists In Sorted Order: "+list);
     }
 
     private static void flatteningAListOfLists(List<List<String>> records) {

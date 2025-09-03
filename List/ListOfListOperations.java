@@ -37,6 +37,12 @@ public class ListOfListOperations {
         removeDuplicatesIgnoringCaseInNameAndDesignation(records);
         findLargestName(records);
         longestSubStringWithoutRepeatingCharacters(records);
+        flatteningAListOfLists(records);
+    }
+
+    private static void flatteningAListOfLists(List<List<String>> records) {
+        List<String> list = records.stream().flatMap(List::stream).collect(Collectors.toList());
+        System.out.println("Flattening a list of lists: "+list);
     }
 
     private static void longestSubStringWithoutRepeatingCharacters(List<List<String>> records) {

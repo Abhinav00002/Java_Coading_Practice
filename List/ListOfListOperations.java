@@ -11,7 +11,7 @@ public class ListOfListOperations {
     // list = [Date, Salary, Name, Age, Designation]
     records.add(Arrays.asList("2025-08-01", "50000", "Alice", "30", "Developer"));
     records.add(Arrays.asList("2025-08-01", "50000", "alice", "30", "developer"));  // duplicate with case difference
-    records.add(Arrays.asList("2025-08-02", "60000", "Bobadbabbaadddaoooad", "35", "Manager"));
+    records.add(Arrays.asList("2025-08-02", "60000", "Boboooadbabbaadddaoooad", "35", "Manager"));
     records.add(Arrays.asList("2025-08-03", "70000", "CHARLIE", "28", "Analyst"));
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // special character in name
     records.add(Arrays.asList("2025-08-04", "80000", "D@vid", "40", "Sr. Developer")); // exact duplicate
@@ -40,6 +40,12 @@ public class ListOfListOperations {
         flatteningAListOfLists(records);
         flatteningAListOfSortedOrderLists(records);
         joiningAllElementInSingleString(records);
+        sortingBySalary(records);
+    }
+
+    private static void sortingBySalary(List<List<String>> records) {
+        List<List<String>> lists = records.stream().sorted(Comparator.comparing(record -> Integer.parseInt(record.get(1)),Comparator.reverseOrder())).toList();
+        System.out.println("Sorted By Salary: "+lists);
     }
 
     private static void joiningAllElementInSingleString(List<List<String>> records) {

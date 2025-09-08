@@ -45,6 +45,7 @@ public class ListOfListOperations {
 
     private static void sortingBySalary(List<List<String>> records) {
         List<List<String>> lists = records.stream().sorted(Comparator.comparing(record -> Integer.parseInt(record.get(1)),Comparator.reverseOrder())).toList();
+        
         System.out.println("Sorted By Salary: "+lists);
     }
 

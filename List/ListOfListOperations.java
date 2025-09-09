@@ -44,17 +44,25 @@ public class ListOfListOperations {
     }
 
     private static void sortingBySalary(List<List<String>> records) {
-        List<List<String>> lists = records.stream().sorted(Comparator.comparing(record -> Integer.parseInt(record.get(1)),Comparator.reverseOrder())).toList();
+        List<List<String>> lists = records.stream()
+                .sorted(Comparator.comparing(
+                        record -> Integer.parseInt(record.get(1)),Comparator.reverseOrder()))
+                .toList();
         System.out.println("Sorted By Salary: "+lists);
     }
 
     private static void joiningAllElementInSingleString(List<List<String>> records) {
-        String collected = records.stream().flatMap(List::stream).collect(Collectors.joining());
+        String collected = records.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.joining());
         System.out.println("Joining All Element In Single String: "+collected );
     }
 
     private static void flatteningAListOfSortedOrderLists(List<List<String>> records) {
-        List<String> list = records.stream().flatMap(List::stream).sorted().collect(Collectors.toList());
+        List<String> list = records.stream()
+                .flatMap(List::stream)
+                .sorted()
+                .collect(Collectors.toList());
         System.out.println("Flattening A List Of Lists In Sorted Order: "+list);
     }
 
